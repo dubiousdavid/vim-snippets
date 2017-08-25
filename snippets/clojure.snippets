@@ -61,6 +61,8 @@ snippet defm "defmacro"
 snippet binding
 	(binding [${1:bindings}]
 		${0})
+snippet keys
+	{:keys [${0}]}
 # Multi methods
 snippet defmethod
 	(defmethod ${1:multifn} "${2:doc-string}" ${3:dispatch-val} [${4:args}]
