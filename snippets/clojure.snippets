@@ -83,7 +83,7 @@ snippet binding
 snippet keys
 	{:keys [${0}]}
 snippet kwa "keyword args"
-	& {:keys [${0}]}
+	& {:keys [${1:keys}] :or {${0:defaults}}
 # Multi methods
 snippet defmethod
 	(defmethod ${1:multifn} "${2:doc-string}" ${3:dispatch-val} [${4:args}]
@@ -100,6 +100,9 @@ snippet extendp "extend-protocol"
 	(extend-protocol ${1:Protocol}
 		${2:Type}
 			${0:methods})
+snippet method
+	(${1:name} [${2:this} ${3:args}]
+		${0})
 snippet deft "deftype"
 	(deftype ${1:Name} [${2:fields}]
 		${3:Protocol}
@@ -117,9 +120,6 @@ snippet doseq
 snippet dotimes
 	(dotimes [${1:bindings}]
 		${0})
-snippet method
-	(${1:name} [${2:this} ${3:args}]
-		${0})
 snippet map "map anonymous fn"
 	(map #(${1:lambda}) ${0})
 snippet mapi "map-indexed"
@@ -134,7 +134,6 @@ snippet ns
 	(ns ${0:name})
 snippet imp "import"
 	(:import [${1:package}])
-		& {:keys [${1:keys}] :or {${0:defaults}}}
 snippet refc "refer-clojure"
 	(:refer-clojure :exclude [${0}])
 snippet req "require with alias"
