@@ -82,6 +82,8 @@ snippet binding
 		${0})
 snippet keys
 	{:keys [${0}]}
+snippet kwa "keyword args"
+	& {:keys [${0}]}
 # Multi methods
 snippet defmethod
 	(defmethod ${1:multifn} "${2:doc-string}" ${3:dispatch-val} [${4:args}]
@@ -90,8 +92,8 @@ snippet defmulti
 	(defmulti ${1:name} "${2:doc-string}" ${0:dispatch-fn})
 # Protocols/Types
 snippet defp "defprotocol"
-	(defprotocol ${1:name}
-		${0})
+	(defprotocol ${1:Name}
+		${0:method signatures})
 snippet pmeth "protocol method"
 	(${1:name} [${2:this} ${0:args}])
 snippet extendp "extend-protocol"
@@ -107,9 +109,7 @@ snippet extendt "extend-type"
 		${2:Protocol}
 		${0:methods})
 snippet defr "defrecord"
-	(defrecord ${1:name} [${2:fields}]
-		${3:protocol}
-		${0})
+	(defrecord ${1:Name} [${0:fields}])
 # Iteration
 snippet doseq
 	(doseq [${1:elem} ${2:coll}]
@@ -159,7 +159,7 @@ snippet pint
 snippet pdouble
 	(Double/parseDouble ${0})
 # Misc
-snippet comm
+snippet comm "comment"
 	(comment
 		${0})
 snippet pr "println"
